@@ -1,6 +1,8 @@
 import colors as c
 from time import sleep as s
 import os as o
+import classes as c
+import game
 
 dragonAscii = '''
 
@@ -35,12 +37,12 @@ def askLoad():
         pass
         #TODO Clear dragon.json
         #TODO Set dragon.json = main attributes
-        #TODO Game run file
+        game.main()
         print(c.cl)
     elif load == '2':
         pass
         #TODO Set dragon.json = old attributes
-        #TODO Game run file
+        game.main()
         print(c.cl)    
     else:
         print(c.y + "Please respond with a 1 or a 2.")
@@ -51,3 +53,4 @@ if __name__ == '__main__':
     o.system('clear')
     main()
     print(c.c)
+
