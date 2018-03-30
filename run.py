@@ -1,8 +1,11 @@
-import colors as c
+import colors as co
 from time import sleep as s
 import os as o
-import classes as c
+
+import classes as cl
 import game
+import load as loads
+import save as saves
 
 dragonAscii = '''
 
@@ -27,30 +30,59 @@ dragonAscii = '''
 '''
 
 def main():
-    print(c.c + 'Welcome to train your dragon!')
-    print(c.rc([c.red, c.orange, c.yellow, c.blue, c.green, c.violet, c.cyan, c.magenta]) + dragonAscii)
+    print(co.c + 'Welcome to train your dragon!')
+    print(co.rc([co.red, co.orange, co.yellow, co.blue, co.green, co.violet, co.cyan, co.magenta]) + dragonAscii)
     s(2)
+    askLoad()
 
 def askLoad():
-    load = input(c.y + 'Would you like to make a new game or load an old save?\nNew - 1\nOld - 2\n >>> '.strip().lower())
+    load = input(co.b + 'Would you like to make a new game or load an old save?\nNew - 1\nOld - 2\n >>> ').strip().lower()
     if load == '1':
-        pass
-        #TODO Clear dragon.json
-        #TODO Set dragon.json = main attributes
+        cl.Dragon = cl.Base
+        c()
+        askColor()
+        saves.save_game()
         game.main()
-        print(c.cl)
     elif load == '2':
-        pass
-        #TODO Set dragon.json = old attributes
+        loads.load_game()
+        c()    
         game.main()
-        print(c.cl)    
     else:
-        print(c.y + "Please respond with a 1 or a 2.")
+        print(co.y + "Please respond with a 1 or a 2.")
         s(1.5)
+        c()
         askLoad()
 
-if __name__ == '__main__':
-    o.system('clear')
-    main()
-    print(c.c)
+def askColor():
+    colors = ['red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'violet', 'magenta']
+    color = input(co.b + 'What color do you want your dragon to be?\nRed\nOrange\nYellow\nGreen\nBlue\nCyan\nMagenta\nViolet\n >>> ').strip().lower()
+    if color not in colors:
+        print(co.y + 'Please list one of the colors listed above.')
+        s(1.5)
+        c()
+        askColor()
+    else:
+        cl.Dragon.color = color
 
+def askName():
+    name = input(co.b + 'What do you want to name your drgon?\n >>> ').title().strip()
+    if name == '':
+        print(co.y + 'Please give a name.')
+        s(1.5)
+        c()
+    else:
+        nameConfirm = input(co.b + 'Your dragon is going to be named ' + name + ', are you sure you want this name?\nYes - 1\nNo - 2\n >>> ')
+        if nameConfirm == '1':
+            cl.Dragon.name = name
+        elif nameConfirm == '2':
+            c()
+            askName()
+        else:
+            print(co.y + 'Please answer with a 1 or a 2.')
+
+def c():
+    o.system('clear')
+
+if __name__ == '__main__':
+    c()
+    main()
