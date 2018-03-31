@@ -58,15 +58,19 @@ def attackTrain():
     s(2)
     if round(reactionTime * 1000) < cl.highScores.attack:
         cl.highScores.attack = round(reactionTime * 1000)
-        if cl.Dragon.hap >= 30:
-            cl.Dragon.xp += 20 - round(reactionTime * 10)
-            if cl.Dragon.hap >= 80:
-                cl.Dragon.xp += 5
+    if cl.Dragon.hap >= 30:
+        cl.Dragon.xp += 20 - round(reactionTime * 10)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.xp += 5
     if round(reactionTime * 10) < 6 and cl.Dragon.hap >= 30:
         cl.Dragon.att += 5 - round(reactionTime * 10)
+        print(5 - round(reactionTime * 10))
+        s(2)
         if cl.Dragon.hap >= 80:
             cl.Dragon.att += 1
     cl.Dragon.hap -= round((cl.Dragon.hap - 100) * .25)
+    if cl.Dragon.hap < 0:
+        cl.Dragon.hap = 0
     sav.save_game()
     sav.save_scores() 
 
@@ -158,15 +162,19 @@ def defenceTrain():
         s(2)
         if round(breactionTime * 1000) < cl.highScores.defence:
             cl.highScores.defence = round(reactionTime * 1000)
-            if cl.Dragon.hap >= 30:
-                cl.Dragon.xp += 20 - round(reactionTime * 10)
-                if cl.Dragon.hap >= 80:
-                    cl.Dragon.xp += 5
+        if cl.Dragon.hap >= 30:
+            cl.Dragon.xp += 20 - round(reactionTime * 10)
+            if cl.Dragon.hap >= 80:
+                cl.Dragon.xp += 5
         if round(reactionTime * 10) < 6 and cl.Dragon.hap >= 30:
             cl.Dragon.dfc += 5 - round(reactionTime * 10)
+            print(5 - round(reactionTime * 10))
+            s(2)
             if cl.Dragon.hap >= 80:
                 cl.Dragon.dfc += 1
     cl.Dragon.hap -= round((cl.Dragon.hap - 100) * .25)
+    if cl.Dragon.hap < 0:
+        cl.Dragon.hap = 0
     sav.save_game()
     sav.save_scores() 
 
@@ -180,22 +188,99 @@ def dodgeTrain():
 def speedAsk():
     tutorial = input(co.b + 'Do you want the tutorial on how to train for speed?\nYes - 1\nNo - 2\n >>> ')
     if tutorial == '1':
-        print(co.g + 'To play, press enter as soon as you see ATTACK appear on the screen. That faster you respond, the more XP you get.')
+        print(co.g + 'To play, press enter twice as soon as you see START appear on the screen. The faster you respond, the more XP you get.')
         input('---Press Enter to continue---')
         c()
-        attackTrain()
+        speedTrain()
     elif tutorial == '2':
         c()
-        attackTrain()
+        speedTrain()
     else:
         print(co.y + 'Please respond with a 1 or a 2.')
         s(2)
-        attackAsk()
+        speedAsk()
 
-#TODO for speed game, see how fast you can click two enter bars together
-
+def speedTrain():
+    c()
+    input(co.c + '---Press Enter to start---')
+    c()
+    s(random.randint(1, 10))
+    input('START')
+    then = time.time()
+    input()
+    reactionTime = time.time() - then
+    print(f"Your speed time was {reactionTime*1000:.0f} ms")
+    s(2)
+    if round(reactionTime * 1000) < cl.highScores.speed:
+        cl.highScores.speed = round(reactionTime * 1000)
+    if cl.Dragon.hap >= 30:
+        cl.Dragon.xp += 20 - round(reactionTime * 10)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.xp += 5
+    if round(reactionTime * 10) < 6 and cl.Dragon.hap >= 30:
+        cl.Dragon.spd += 5 - round(reactionTime * 10)
+        print(5 - round(reactionTime * 10))
+        s(2)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.spd += 1
+    cl.Dragon.hap -= round((cl.Dragon.hap - 100) * .25)
+    if cl.Dragon.hap < 0:
+        cl.Dragon.hap = 0
+    sav.save_game()
+    sav.save_scores() 
 
 #TODO for stamina game, press enter 5 times and try to be consistant??
+def staminaAsk():
+    tutorial = input(co.b + 'Do you want the tutorial on how to train for speed?\nYes - 1\nNo - 2\n >>> ')
+    if tutorial == '1':
+        print(co.g + 'To play, press enter three times, trying to have one second in between each press as soon as you see START appear on the screen. The closer the interval is to one second, the more XP you get.')
+        input('---Press Enter to continue---')
+        c()
+        staminaTrain()
+    elif tutorial == '2':
+        c()
+        staminaTrain()
+    else:
+        print(co.y + 'Please respond with a 1 or a 2.')
+        s(2)
+        staminaAsk()
+
+def staminaTrain():
+    c()
+    input(co.c + '---Press Enter to start---')
+    c()
+    s(random.randint(1, 10))
+    input('START')
+    then = time.time()
+    input()
+    reactionTime = time.time() - then
+    input()
+    reactionTimeTwo = time.time() - reactionTime
+    reactionTime -= 1
+    reactionTimeTwo -= 1
+    if reactionTime < reactionTimeTwo:
+        breactionTime = reactionTime
+    else:
+        breactionTime = reactionTimeTwo
+    print(f"Your best interval time was {breactionTime*1000:.0f} ms")
+    s(2)
+    if round(breactionTime * 1000) < cl.highScores.stamina:
+        cl.highScores.stamina = round(breactionTime * 1000)
+    if cl.Dragon.hap >= 30:
+        cl.Dragon.xp += 15 - round(breactionTime * 10)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.xp += 5
+    if round(breactionTime * 10) < 6 and cl.Dragon.hap >= 30:
+        cl.Dragon.sta += 5 - round(reactionTime * 10)
+        print(5 - round(reactionTime * 10))
+        s(2)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.sta += 1
+    cl.Dragon.hap -= round((cl.Dragon.hap - 100) * .25)
+    if cl.Dragon.hap < 0:
+        cl.Dragon.hap = 0
+    sav.save_game()
+    sav.save_scores()
 
 def c():
     o.system('clear')
