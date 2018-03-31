@@ -10,7 +10,7 @@ import load as loa
 def askTrain():
     loa.load_game()
     loa.load_scores()
-    training = input('What would you like to train on?\nAttack - 1\nDefence - 2\nDodge - 3\nSpeed - 4\nStamina - 5\n >>> ')
+    training = input(c.b + 'What would you like to train on?\nAttack - 1\nDefence - 2\nDodge - 3\nSpeed - 4\nStamina - 5\n >>> ')
     if training == '1':
         c()
         attackAsk()
