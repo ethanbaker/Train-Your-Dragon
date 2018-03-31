@@ -2,7 +2,6 @@ import json
 import classes as cl
 from time import sleep as s
 import colors as co
-
 def save_anim():
     c()
     print(co.m + 'Saving game.')
@@ -47,9 +46,11 @@ def save_game():
             }))
 
 def save_scores():
-
-
-
-
-
-
+    with open('highScores.json', 'w') as saved:
+        saved.write(json.dumps({
+            "attack":cl.highScores.attack,
+            "defence":cl.highScores.defence,
+            "dodge":cl.highScores.dodge,
+            "speed":cl.highScores.speed,
+            "stamina":cl.highScores.stamina
+            }))

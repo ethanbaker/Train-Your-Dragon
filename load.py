@@ -2,7 +2,6 @@ import classes as cl
 import json
 from time import sleep as s
 import colors as co
-
 def load_anim():
     c()
     print(co.m + 'Loading game.')
@@ -40,6 +39,15 @@ def load_game():
         cl.Dragon.color = jlp['color']
         cl.Dragon.xp = jlp['xp']
         cl.Dragon.lvl = jlp['lvl']
+
+def load_scores():
+    with open('highScores.json', 'r') as pfile:
+        jlp = json.load(pfile)
+        cl.highScores.attack = jlp['attack']
+        cl.highScores.defence = jlp['defence']
+        cl.highScores.dodge = jlp['dodge']
+        cl.highScores.speed = jlp['speed']
+        cl.highScores.stamina = jlp['stamina']
 
 def c():
     print(co.cl)
