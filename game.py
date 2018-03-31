@@ -10,6 +10,8 @@ import tournaments as tourney
 import play
 import practice as prat
 
+goldCup = False
+
 statBoard = '''
 Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   Stamina - {}   Happiness - {}   Level - {}
 
@@ -60,10 +62,10 @@ def welcome():
     askTutorial = input(co.b + 'Welcome to Train Your Dragon! Would you like to go through the tutorial?\nYes - 1\nNo - 2\n >>> ').strip()
     if askTutorial == '1':
         tutorial()
-        intro()
+        run()
     elif askTutorial == '2':
         c()
-        intro()
+        run()
     else:
         print(co.y + 'Please answer with a 1 or a 2.')
 
@@ -125,8 +127,8 @@ def tutorial():
     s(1.5)
     c()
 
-def intro():
-    print(co.g + 'Welcome to the training center! From here you can train your dragon, practice battling other trainers, play in tournaments, or \nplay with your dragon!')
+def run():
+    print(co.g + 'Welcome to the Dragon Center! From here you can train your dragon, practice battling other trainers, play in tournaments, or \nplay with your dragon!')
     print()
     action = input(co.b + 'What would you like to do?\nTrain - 1\nPractice Battles - 2\nPlay in Tournaments - 3\nPlay with ' + cl.Dragon.name + ' - 4\n >>> ')
     if action == '1':
@@ -144,7 +146,7 @@ def intro():
             print(co.y + 'Sorry, you must be level 15 or above to play in tournaments.')
             s(2)
             c()
-            intro()
+            run()
         else:
             if cl.Dragon.hap < 20:
                 print(cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
@@ -154,6 +156,9 @@ def intro():
         play.main()
     else:
         print(co.y + 'Please answer with a 1, 2, 3, or a 4.')
+        s(2)
+        c()
+        run()
 
 def c():
     o.system('clear')
@@ -161,7 +166,7 @@ def c():
 def main():
     c()
     welcome()    
-    intro()
+    run()
 
 
 if __name__ == '__main__':

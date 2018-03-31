@@ -30,7 +30,7 @@ dragonAscii = '''
 '''
 
 def main():
-    print(co.c + 'Welcome to train your dragon!')
+    print(co.c + 'Welcome to Train Your Dragon!')
     print(co.rc([co.red, co.orange, co.yellow, co.blue, co.green, co.violet, co.cyan, co.magenta]) + dragonAscii)
     s(2)
     askLoad()
@@ -84,5 +84,8 @@ def c():
     o.system('clear')
 
 if __name__ == '__main__':
-    c()
-    main()
+    try:
+        c()
+        main()
+    except KeyboardInterrupt:
+        exit

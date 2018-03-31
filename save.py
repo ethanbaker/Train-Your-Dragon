@@ -46,4 +46,10 @@ def save_game():
             "lvl":cl.Dragon.lvl,
             }))
 
+def save_scores():
+
+
+
+
+
 
