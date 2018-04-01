@@ -41,13 +41,13 @@ def load_game():
         cl.Dragon.lvl = jlp['lvl']
 
 def load_scores():
-    with open('highScores.json', 'r') as pfile:
-        jlp = json.load(pfile)
-        cl.highScores.attack = jlp['attack']
-        cl.highScores.defense = jlp['defense']
-        cl.highScores.dodge = jlp['dodge']
-        cl.highScores.speed = jlp['speed']
-        cl.highScores.stamina = jlp['stamina']
+    with open('highScores.json', 'r') as ppfile:
+        jp = json.load(ppfile)
+        cl.highScores.attack = jp['attack']
+        cl.highScores.defense = jp['defense']
+        cl.highScores.dodge = jp['dodge']
+        cl.highScores.speed = jp['speed']
+        cl.highScores.stamina = jp['stamina']
 
 def c():
     print(co.cl)

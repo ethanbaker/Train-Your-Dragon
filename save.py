@@ -49,7 +49,7 @@ def save_scores():
     with open('highScores.json', 'w') as saved:
         saved.write(json.dumps({
             "attack":cl.highScores.attack,
-            "defense":cl.highScores.defence,
+            "defense":cl.highScores.defense,
             "dodge":cl.highScores.dodge,
             "speed":cl.highScores.speed,
             "stamina":cl.highScores.stamina

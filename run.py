@@ -42,9 +42,11 @@ def askLoad():
         c()
         askColor()
         saves.save_game()
+        saves.save_scores()
         game.main()
     elif load == '2':
         loads.load_game()
+        loads.load_scores()
         c()    
         game.main()
     else:
