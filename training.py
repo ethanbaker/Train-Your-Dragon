@@ -340,15 +340,19 @@ def staminaTrain():
     then = time.time()
     input()
     reactionTime = time.time() - then
+    thenTwo = time.time()
     input()
-    reactionTimeTwo = time.time() - reactionTime
+    reactionTimeTwo = time.time() - thenTwo
     reactionTime -= 1
     reactionTimeTwo -= 1
+    print(reactionTime)
+    print(reactionTimeTwo)
+    s(5)
     xpGain = 0
     staGain = 0
     print(colorDef())
     anim.staminaAnim()
-    if reactionTime < reactionTimeTwo:
+    if abs(reactionTime) < abs(reactionTimeTwo):
         breactionTime = reactionTime
     else:
         breactionTime = reactionTimeTwo
@@ -364,8 +368,12 @@ def staminaTrain():
             cl.Dragon.xp += 5
             xpGain += 5
     if round(breactionTime * 10) < 5 and cl.Dragon.hap >= 30:
-        cl.Dragon.sta += 4 - math.floor(reactionTime * 10)
-        staGain += 4 - math.floor(reactionTime * 10)
+        if 4 - math.floor(reactionTime * 10) > 3:
+            cl.Dragon.sta += 3
+            staGain += 3
+        else:
+            cl.Dragon.sta += 4 - math.floor(reactionTime * 10)
+            staGain += 4 - math.floor(reactionTime * 10)
         if cl.Dragon.hap >= 80:
             cl.Dragon.sta += 1
             staGain += 1
