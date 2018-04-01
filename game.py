@@ -128,37 +128,39 @@ def tutorial():
     c()
 
 def run():
-    print(co.g + 'Welcome to the Dragon Center! From here you can train your dragon, practice battling other trainers, play in tournaments, or \nplay with your dragon!')
-    print()
-    action = input(co.b + 'What would you like to do?\nTrain - 1\nPractice Battles - 2\nPlay in Tournaments - 3\nPlay with ' + cl.Dragon.name + ' - 4\n >>> ')
-    if action == '1':
-        if cl.Dragon.hap < 20:
-            print(cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
-        else:
-            train.main()
-    elif action == '2':
-        if cl.Dragon.hap < 20:
-            print(cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
-        else:
-            prat.main()
-    elif action == '3':
-        if cl.Dragon.lvl < 15:
-            print(co.y + 'Sorry, you must be level 15 or above to play in tournaments.')
-            s(2)
-            c()
-            run()
-        else:
+    while goldCup == False:
+        statShow()
+        print(co.g + 'Welcome to the Dragon Center! From here you can train your dragon, practice battling other trainers, play in tournaments, or \nplay with your dragon!')
+        print()
+        action = input(co.b + 'What would you like to do?\nTrain - 1\nPractice Battles - 2\nPlay in Tournaments - 3\nPlay with ' + cl.Dragon.name + ' - 4\n >>> ')
+        if action == '1':
             if cl.Dragon.hap < 20:
                 print(cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
             else:
-                tourney.main()
-    elif action == '4':
-        play.main()
-    else:
-        print(co.y + 'Please answer with a 1, 2, 3, or a 4.')
-        s(2)
-        c()
-        run()
+                train.main()
+        elif action == '2':
+            if cl.Dragon.hap < 20:
+                print(cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
+            else:
+                prat.main()
+        elif action == '3':
+            if cl.Dragon.lvl < 15:
+                print(co.y + 'Sorry, you must be level 15 or above to play in tournaments.')
+                s(2)
+                c()
+                run()
+            else:
+                if cl.Dragon.hap < 20:
+                    print(cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
+                else:
+                    tourney.main()
+        elif action == '4':
+            play.main()
+        else:
+            print(co.y + 'Please answer with a 1, 2, 3, or a 4.')
+            s(2)
+            c()
+            run()
 
 def c():
     o.system('clear')

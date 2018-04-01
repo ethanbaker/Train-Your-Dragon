@@ -7,11 +7,13 @@ import time
 import save as sav
 import load as loa
 import math
+import game
+import animations as anim
 
 def askTrain():
     loa.load_game()
     loa.load_scores()
-    training = input(co.b + 'What would you like to train on?\nAttack - 1\nDefence - 2\nDodge - 3\nSpeed - 4\nStamina - 5\nType 6 to see the High Scores\n >>> ')
+    training = input(co.b + 'What would you like to train on?\nAttack - 1\nDefence - 2\nDodge - 3\nSpeed - 4\nStamina - 5\nSee High Scores - 6\nReturn to the Training Center - 7\n >>> ')
     if training == '1':
         c()
         attackAsk()
@@ -33,6 +35,11 @@ def askTrain():
         print('Dodge game high score - ' + str(cl.highScores.dodge))
         print('Speed game high score - ' + str(cl.highScores.speed))
         print('Stamina game high score - ' + str(cl.highScores.stamina))
+    elif training == '7':
+        print('Returning to the training center.')
+        s(2)
+        c()
+        game.run()
     else:
         print(co.y + 'Please answer with a 1, 2, 3, 4, or a 5.')
         s(2)
@@ -68,6 +75,7 @@ def attackTrain():
         print(co.r + 'You failed! Try again next time.')
         s(2)
     else:
+        anim.attackAnim()
         xpGain = 0
         attGain = 0
         print(co.g + f"Your reaction time was {reactionTime*1000:.0f} ms")
