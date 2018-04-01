@@ -57,7 +57,7 @@ def askLoad():
 
 def askColor():
     colors = ['red', 'orange', 'yellow', 'green', 'blue', 'cyan', 'violet', 'magenta']
-    color = input(co.b + 'What color do you want your dragon to be?\nRed\nOrange\nYellow\nGreen\nBlue\nCyan\nMagenta\nViolet\n >>> ').strip().lower()
+    color = input(co.b + 'What color do you want your dragon to be?\n' + co.r + 'Red\n' + co.o + 'Orange\n' + co.y + 'Yellow\n' + co.g + 'Green\n' + co.b + 'Blue\n' + co.c + 'Cyan\n' + co.m + 'Magenta\n' + co.v + 'Violet\n >>> ').strip().lower()
     if color not in colors:
         print(co.y + 'Please list one of the colors listed above.')
         s(1.5)
