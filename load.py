@@ -44,7 +44,7 @@ def load_scores():
     with open('highScores.json', 'r') as pfile:
         jlp = json.load(pfile)
         cl.highScores.attack = jlp['attack']
-        cl.highScores.defence = jlp['defence']
+        cl.highScores.defense = jlp['defense']
         cl.highScores.dodge = jlp['dodge']
         cl.highScores.speed = jlp['speed']
         cl.highScores.stamina = jlp['stamina']

@@ -16,7 +16,7 @@ class Dragon(Base):
 
 class highScores():
         attack = 10000
-        defence = 10000
+        defense = 10000
         dodge = 10000
         speed = 10000
         stamina = 10000

@@ -17,7 +17,7 @@ def askTrain():
         attackAsk()
     elif training == '2':
         c()
-        defenceAsk()
+        defenseAsk()
     elif training == '3':
         c()
         dodgeAsk()
@@ -80,22 +80,22 @@ def attackTrain():
     sav.save_game()
     sav.save_scores() 
 
-def defenceAsk():
-    tutorial = input(co.b + 'Do you want the tutorial on how to train for defence?\nYes - 1\nNo - 2\n >>> ')
+def defenseAsk():
+    tutorial = input(co.b + 'Do you want the tutorial on how to train for defense?\nYes - 1\nNo - 2\n >>> ')
     if tutorial == '1':
         print(co.c + 'To play, press enter as soon as you see DEFEND appear on the screen. Do not press anything when ATTACK appears on the screen. That faster you respond to DEFEND, the more XP you get. You will lose XP if you respond to ATTACK.')
         input('---Press Enter to continue---')
         c()
-        defenceTrain()
+        defenseTrain()
     elif tutorial == '2':
         c()
-        defenceTrain()
+        defenseTrain()
     else:
         print(co.y + 'Please respond with a 1 or a 2.')
         s(2)
-        defenceAsk()
+        defenseAsk()
 
-def defenceTrain():
+def defenseTrain():
     c()
     input(co.c + '---Press Enter to start---')
     c()
@@ -164,8 +164,8 @@ def defenceTrain():
     else:
         print(f"Your best reaction time was {breactionTime*1000:.0f} ms")
         s(2)
-        if round(breactionTime * 1000) < cl.highScores.defence:
-            cl.highScores.defence = round(breactionTime * 1000)
+        if round(breactionTime * 1000) < cl.highScores.defense:
+            cl.highScores.defense = round(breactionTime * 1000)
         if cl.Dragon.hap >= 30:
             cl.Dragon.xp += 20 - round(breactionTime * 10)
             if cl.Dragon.hap >= 80:
@@ -181,11 +181,52 @@ def defenceTrain():
     sav.save_scores() 
 
 def dodgeAsk():
-    pass
-#TODO Make function
+    tutorial = input(co.b + 'Do you want the tutorial on how to train for dodge?\nYes - 1\nNo - 2\n >>> ')
+    if tutorial == '1':
+        print(co.c + 'To play, press enter twice as soon as you see START appear on the screen. The faster you respond, the more XP you get.')
+        input('---Press Enter to continue---')
+        c()
+        dodgeTrain()
+    elif tutorial == '2':
+        c()
+        dodgeTrain()
+    else:
+        print(co.y + 'Please respond with a 1 or a 2.')
+        s(2)
+        dodgeAsk()
+
 def dodgeTrain():
-    pass
-#TODO Make function
+    c()
+    input(co.c + '---Press Enter to start---')
+    c()
+    x = random.randint(3, 9)
+    s(random.randint(1, 10))
+    input('There is an obsticle ' + str(x) + ' seconds away!')
+    s(x)
+    then = time.time()
+    input()
+    reactionTime = time.time() - then
+    if reactionTime <= 0.01:
+        print('You failed! Try again next time.')
+    else:
+        print(f"Your dodge time was {reactionTime*1000:.0f} ms")
+        s(2)
+        if round(reactionTime * 1000) < cl.highScores.speed:
+            cl.highScores.speed = round(reactionTime * 1000)
+        if cl.Dragon.hap >= 30:
+            cl.Dragon.xp += 20 - round(reactionTime * 10)
+            if cl.Dragon.hap >= 80:
+                cl.Dragon.xp += 5
+        if round(reactionTime * 10) < 5 and cl.Dragon.hap >= 30:
+            cl.Dragon.spd += 4 - math.floor(reactionTime * 10)
+            if cl.Dragon.hap >= 80:
+                cl.Dragon.spd += 1
+        cl.Dragon.hap -= round((cl.Dragon.hap - 100) * .25)
+        if cl.Dragon.hap < 0:
+            cl.Dragon.hap = 0
+    sav.save_game()
+    sav.save_scores() 
+
 
 def speedAsk():
     tutorial = input(co.b + 'Do you want the tutorial on how to train for speed?\nYes - 1\nNo - 2\n >>> ')
