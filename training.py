@@ -11,7 +11,7 @@ import math
 def askTrain():
     loa.load_game()
     loa.load_scores()
-    training = input(co.b + 'What would you like to train on?\nAttack - 1\nDefence - 2\nDodge - 3\nSpeed - 4\nStamina - 5\n >>> ')
+    training = input(co.b + 'What would you like to train on?\nAttack - 1\nDefence - 2\nDodge - 3\nSpeed - 4\nStamina - 5\nType 6 to see the High Scores\n >>> ')
     if training == '1':
         c()
         attackAsk()
@@ -27,6 +27,12 @@ def askTrain():
     elif training == '5':
         c()
         staminaAsk()
+    elif training == '6':
+        print('Attack game high score - ' + str(cl.highScores.attack))
+        print('Defense game high score - ' + str(cl.highScores.defense))
+        print('Dodge game high score - ' + str(cl.highScores.dodge))
+        print('Speed game high score - ' + str(cl.highScores.speed))
+        print('Stamina game high score - ' + str(cl.highScores.stamina))
     else:
         print(co.y + 'Please answer with a 1, 2, 3, 4, or a 5.')
         s(2)
@@ -62,21 +68,28 @@ def attackTrain():
         print(co.r + 'You failed! Try again next time.')
         s(2)
     else:
+        xpGain = 0
+        attGain = 0
         print(co.g + f"Your reaction time was {reactionTime*1000:.0f} ms")
         s(2)
         if round(reactionTime * 1000) < cl.highScores.attack:
             cl.highScores.attack = round(reactionTime * 1000)
         if cl.Dragon.hap >= 30:
             cl.Dragon.xp += 20 - round(reactionTime * 10)
+            xpGain += 20 - round(reactionTime * 10)
             if cl.Dragon.hap >= 80:
                 cl.Dragon.xp += 5
+                xpGain += 20 - round(reactionTime * 10)
         if round(reactionTime * 10) < 7 and cl.Dragon.hap >= 30:
             cl.Dragon.att += 6 - math.floor(reactionTime * 10)
+            attGain += 6 - math.floor(reactionTime * 10)
             if cl.Dragon.hap >= 80:
                 cl.Dragon.att += 1
+                attGain += 1
         cl.Dragon.hap -= round((100 - cl.Dragon.hap) * .25)
         if cl.Dragon.hap < 0:
             cl.Dragon.hap = 0
+        gain(xpGain, attGain, 'attack')
     sav.save_game()
     sav.save_scores() 
 
@@ -162,18 +175,25 @@ def defenseTrain():
         print(co.r + 'You failed! Try again next time.')
         s(2)
     else:
+        xpGain = 0
+        dfcGain = 0
         print(co.g + f"Your best reaction time was {breactionTime*1000:.0f} ms")
         s(2)
         if round(breactionTime * 1000) < cl.highScores.defense:
             cl.highScores.defense = round(breactionTime * 1000)
         if cl.Dragon.hap >= 30:
             cl.Dragon.xp += 20 - round(breactionTime * 10)
+            xpGain += 20 - round(breactionTime * 10)
             if cl.Dragon.hap >= 80:
                 cl.Dragon.xp += 5
+                xpGain += 5
         if round(breactionTime * 10) < 7 and cl.Dragon.hap >= 30:
             cl.Dragon.dfc += 6 - math.floor(breactionTime * 10)
+            dfcGain += 6 - math.floor(breactionTime * 10)
             if cl.Dragon.hap >= 80:
                 cl.Dragon.dfc += 1
+                dfcGain += 1
+        gain(xpGain, dfcGain, 'defense')
     cl.Dragon.hap -= round((100 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
@@ -200,33 +220,34 @@ def dodgeTrain():
     input(co.c + '---Press Enter to start---')
     c()
     x = random.randint(2, 7)
-    s(random.randint(1, 10))
-    print(co.g + 'There is an obsticle ' + str(x) + ' seconds away!')
+    s(random.randint(3, 8))
+    print(co.g + 'There is an obstacle ' + str(x) + ' seconds away!')
     print()
     then = time.time()
-    s(x)
     input()
     reactionTime = abs(time.time() - then - x)
-    print(f"Your dodge time was {reactionTime*1000:.0f} ms")
-    if reactionTime <= 0.0001:
-        print(co.r + 'You failed! Try again next time.')
-        s(2)
-    else:
-        print(co.g + f"Your dodge time was {reactionTime*1000:.0f} ms")
-        s(2)
-        if round(reactionTime * 1000) < cl.highScores.dodge:
-            cl.highScores.dodge = round(reactionTime * 1000)
-        if cl.Dragon.hap >= 30:
-            cl.Dragon.xp += 20 - round(reactionTime * 10)
-            if cl.Dragon.hap >= 80:
-                cl.Dragon.xp += 5
-        if round(reactionTime * 10) < 5 and cl.Dragon.hap >= 30:
-            cl.Dragon.dog += 4 - math.floor(reactionTime * 10)
-            if cl.Dragon.hap >= 80:
-                cl.Dragon.dog += 1
-        cl.Dragon.hap -= round((100 - cl.Dragon.hap) * .25)
-        if cl.Dragon.hap < 0:
-            cl.Dragon.hap = 0
+    print(co.g + f"Your dodge time was {reactionTime*1000:.0f} ms")
+    s(2)
+    xpGain = 0
+    dogGain = 0
+    if round(reactionTime * 1000) < cl.highScores.dodge:
+        cl.highScores.dodge = round(reactionTime * 1000)
+    if cl.Dragon.hap >= 30:
+        cl.Dragon.xp += 20 - round(reactionTime * 10)
+        xpGain += 20 - round(reactionTime * 10)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.xp += 5
+            xpGain += 5
+    if round(reactionTime * 10) < 5 and cl.Dragon.hap >= 30:
+        cl.Dragon.dog += 4 - math.floor(reactionTime * 10)
+        dogGain += 4 - math.floor(reactionTime * 10)
+        if cl.Dragon.hap >= 80:
+            cl.Dragon.dog += 1
+            dogGain += 1
+        gain(xpGain, dogGain, 'dodge')
+    cl.Dragon.hap -= round((100 - cl.Dragon.hap) * .25)
+    if cl.Dragon.hap < 0:
+        cl.Dragon.hap = 0
     sav.save_game()
     sav.save_scores() 
 
@@ -257,16 +278,23 @@ def speedTrain():
     reactionTime = time.time() - then
     print(co.g + f"Your speed time was {reactionTime*1000:.0f} ms")
     s(2)
+    xpGain = 0
+    spdGain = 0
     if round(reactionTime * 1000) < cl.highScores.speed:
         cl.highScores.speed = round(reactionTime * 1000)
     if cl.Dragon.hap >= 30:
         cl.Dragon.xp += 20 - round(reactionTime * 10)
+        xpGain += 20 - round(reactionTime * 10)
         if cl.Dragon.hap >= 80:
             cl.Dragon.xp += 5
+            xpGain += 5
     if round(reactionTime * 10) < 5 and cl.Dragon.hap >= 30:
         cl.Dragon.spd += 4 - math.floor(reactionTime * 10)
+        spdGain += 4 - math.floor(reactionTime * 10)
         if cl.Dragon.hap >= 80:
             cl.Dragon.spd += 1
+            spdGain += 1
+        gain(xpGain, spdGain, 'speed')
     cl.Dragon.hap -= round((100 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
@@ -301,6 +329,8 @@ def staminaTrain():
     reactionTimeTwo = time.time() - reactionTime
     reactionTime -= 1
     reactionTimeTwo -= 1
+    xpGain = 0
+    staGain = 0
     if reactionTime < reactionTimeTwo:
         breactionTime = reactionTime
     else:
@@ -312,17 +342,30 @@ def staminaTrain():
         cl.highScores.stamina = round(breactionTime * 1000)
     if cl.Dragon.hap >= 30:
         cl.Dragon.xp += 15 - round(breactionTime * 10)
+        xpGain += 15 - round(breactionTime * 10)
         if cl.Dragon.hap >= 80:
             cl.Dragon.xp += 5
+            xpGain += 5
     if round(breactionTime * 10) < 5 and cl.Dragon.hap >= 30:
         cl.Dragon.sta += 4 - math.floor(reactionTime * 10)
+        staGain += 4 - math.floor(reactionTime * 10)
         if cl.Dragon.hap >= 80:
             cl.Dragon.sta += 1
+            staGain += 1
+    gain(xpGain, staGain, 'stamina')
     cl.Dragon.hap -= round((100 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
     sav.save_game()
     sav.save_scores()
+
+def gain(xp, skillAmount, skillName):
+    print()
+    print(co.g + cl.Dragon.name + ' gained ' + str(skillAmount) + ' ' + skillName + ' points.')
+    s(2)
+    print()
+    print(co.g + cl.Dragon.name + ' gained ' + str(xp) + ' XP points.')
+    s(3.5)
 
 def c():
     o.system('clear')
