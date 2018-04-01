@@ -38,7 +38,6 @@ Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   
 '''
 
 def statShow():
-    loa.load_game()
     if cl.Dragon.color == 'red':
        print(co.r + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
     elif cl.Dragon.color == 'orange':
@@ -177,7 +176,7 @@ def c():
 
 def main():
     c()
-    welcome()    
+    loa.load_game()
     run()
 
 

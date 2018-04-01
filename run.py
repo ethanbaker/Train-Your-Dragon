@@ -44,6 +44,7 @@ def askLoad():
         askName()
         saves.save_game()
         saves.save_scores()
+        game.welcome()
         game.main()
     elif load == '2':
         loads.load_game()

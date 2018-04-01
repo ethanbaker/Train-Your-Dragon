@@ -70,7 +70,9 @@ def attackTrain():
     print()
     reactionTime = time.time() - then
     s(2)
-    if reactionTime <= 0.0001:
+    print(reactionTime)
+    s(2)
+    if reactionTime <= 0.01:
         c()
         print(co.r + 'You failed! Try again next time.')
         s(2)
@@ -180,7 +182,7 @@ def defenseTrain():
             breactionTime = reactionTime
         elif reactionTime >= reactionTimeTwo:
             breactionTime = reactionTimeTwo
-    if int(round(breactionTime*1000)) <= 0:
+    if int(round(breactionTime*1000)) <= 0.01:
         print(co.r + 'You failed! Try again next time.')
         s(2)
     else:
