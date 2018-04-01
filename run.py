@@ -41,6 +41,7 @@ def askLoad():
         cl.Dragon = cl.Base
         c()
         askColor()
+        askName()
         saves.save_game()
         saves.save_scores()
         game.main()
@@ -67,7 +68,7 @@ def askColor():
         cl.Dragon.color = color
 
 def askName():
-    name = input(co.b + 'What do you want to name your drgon?\n >>> ').title().strip()
+    name = input(co.b + 'What do you want to name your dragon?\n >>> ').title().strip()
     if name == '':
         print(co.y + 'Please give a name.')
         s(1.5)
