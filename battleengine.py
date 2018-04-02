@@ -42,7 +42,7 @@ def playerAttack():
     if dodge <= 13:
         enemyDodge()
     c()
-    print(co.g + cl.Dragon.name + ' attacks your enemy!')
+    print(co.g + cl.Dragon.name + ' attacks ' + cl.Enemy.name! + '!')
     s(1.5)
     print(playerColorDef())
     anim.attackAnim()
@@ -61,7 +61,7 @@ def enemyAttack():
         playerDodge()
     else:
         c()
-        print(co.g + cl.Enemy.name + ' attacks your enemy!')
+        print(co.g + cl.Enemy.name + ' attacks ' + cl.Dragon.name + '!')
         s(1.5)
         print(enemyColorDef())
         anim.attackAnim()
@@ -73,14 +73,60 @@ def enemyAttack():
             damage = eatt - round(pdfc * (r.randint(.25, .5)))
             phtp -= damage
 
+def playerDefense():
+    print(cl.Dragon.name + ' stays back and defends.')
+    s(2)
+    anim.dodgeAnim()
+    playerD = True
+
+def enemyDefense():
+    print(cl.Enemy.name + ' stays back and defends.')
+    s(2)
+    anim.dodgeAnim()
+    enemyD = True
+
 def playerDodge():
-    
+   c()
+   print(cl.Dragon.name + ' dodges ' + cl.Enemy.name + '\'s attack!')
+   s(2)
+   anim.dodgeAnim()
+   playerD = True
 
 def enemyDodge():
-    pass
+    c()
+    print(cl.Enemy.name + ' dodges ' + cl.Dragon.name + '\'s attack!')
+    s(2)
+    anim.dodgeAnim()
 
 def playerSkillcheck():
-    pass
+    check = r.randint(1, cl.Dragon.lvl + 5))
+    if check == 1:
+        c()
+        then = time.time()
+        input('SKILL CHECK')
+        reactionTIme = time.time() - then
+        if round(reactionTime * 1000) <= 350:
+            patt += 10
+            cl.Dragon.xp += 50
+            print(co.g + 'Amazing Skill Check!')
+        elif round(reactionTime * 1000) <= 750 and round(reactionTime * 1000) > 350:
+            patt += 5
+            cl.Dragon.xp += 30
+            print(co.g + 'Great Skill Check!')
+        elif round(reactionTime * 1000) <= 1000 and round(reactionTime * 1000) > 750:
+            patt += 2
+            cl.Dragon.xp += 10
+            print(co.g + 'Good Skill Check!')
+        elif round(reactionTime * 1000) <= 2000 and round(reactionTime * 1000) > 1000:
+            print(co.g + 'Okay Skill Check.')
+        elif round(reactionTime * 1000) <= 5000 and round(reactionTime * 1000) <= 2000::
+            patt -= 2
+            print(co.g + 'Bad Skill Check.')
+        else:
+            patt -= 5
+            print(co.g + 'Horrible Skill Check.')
+        s(2)
+        c()
 
 def playerColorDef():
     if cl.Dragon.color == 'red':
@@ -126,28 +172,46 @@ def run():
     phtp = cl.Dragon.htp
     patt = cl.Dragon.att
     pdfc = cl.Dragon.dfc
+    playerD = False
     pdog = cl.Dragon.dog
     pspd = cl.Dragon.spd
     psta = cl.Dragon.sta
     ehtp = cl.Enemy.htp
     eatt = cl.Enemy.att
     edfc = cl.Enemy.dfc
+    enemyD = False
     edog = cl.Enemy.dog
     espd = cl.Enemy.spd
     esta = cl.Enemy.sta
+    if cl.Dragon.hap >= 90:
+        patt += 1
+        pdfc += 1
+        pdog += 2
+        pspd += 2
+        psta += 2
+    if cl.Dragon.hap <= 30:
+        patt -= 1
+        pdfc -= 1
+        pdog -= 2
+        pspd -= 2
+        psta -= 2
     while phtp >= 1 and psta >= 1 and ehtp >= 1 and ehtp >= 1:
         if pspd > espd:
+            playerSkillCheck()
             pmove()
             emove()
         elif pspd < espd:
             emove()
+            playerSkillCheck()
             pmove()
         else:
             first = r.choice('Enemy', 'Player')
             if first == 'Enemy':
                 emove()
+                playerSkillCheck()
                 pmove()
             elif first == 'Player':
+                playerSkillCheck()
                 pmove()
                 emove()
 
