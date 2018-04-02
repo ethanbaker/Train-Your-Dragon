@@ -97,7 +97,12 @@ def attackTrain():
             if cl.Dragon.hap >= 90:
                 cl.Dragon.att += 1
                 attGain += 1
-        cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+        if cl.Dragon.hap >= 70:
+            cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+        elif cl.Dragon.hap < 70 and cl.Dragon.hap >= 40:
+            cl.Dragon.hap -= round((90 - cl.Dragon.hap) * .25)
+        else:
+            cl.Dragon.hap -= round((80 - cl.Dragon.hap) * .25)
         if cl.Dragon.hap < 0:
             cl.Dragon.hap = 0
         gain(xpGain, attGain, 'attack')
@@ -207,7 +212,12 @@ def defenseTrain():
                 cl.Dragon.dfc += 1
                 dfcGain += 1
         gain(xpGain, dfcGain, 'defense')
-    cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+    if cl.Dragon.hap >= 70:
+        cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+    elif cl.Dragon.hap < 70 and cl.Dragon.hap >= 40:
+        cl.Dragon.hap -= round((90 - cl.Dragon.hap) * .25)
+    else:
+        cl.Dragon.hap -= round((80 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
     sav.save_game()
@@ -260,7 +270,12 @@ def dodgeTrain():
             cl.Dragon.dog += 1
             dogGain += 1
         gain(xpGain, dogGain, 'dodge')
-    cl.Dragon.hap -= round((105 - cl.Dragon.hap) * .25)
+    if cl.Dragon.hap >= 70:
+        cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+    elif cl.Dragon.hap < 70 and cl.Dragon.hap >= 40:
+        cl.Dragon.hap -= round((90 - cl.Dragon.hap) * .25)
+    else:
+        cl.Dragon.hap -= round((80 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
     sav.save_game()
@@ -312,7 +327,12 @@ def speedTrain():
             cl.Dragon.spd += 1
             spdGain += 1
         gain(xpGain, spdGain, 'speed')
-    cl.Dragon.hap -= round((105 - cl.Dragon.hap) * .25)
+    if cl.Dragon.hap >= 70:
+        cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+    elif cl.Dragon.hap < 70 and cl.Dragon.hap >= 40:
+        cl.Dragon.hap -= round((90 - cl.Dragon.hap) * .25)
+    else:
+        cl.Dragon.hap -= round((80 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
     sav.save_game()
@@ -380,7 +400,12 @@ def staminaTrain():
             cl.Dragon.sta += 1
             staGain += 1
     gain(xpGain, staGain, 'stamina')
-    cl.Dragon.hap -= round((105 - cl.Dragon.hap) * .25)
+    if cl.Dragon.hap >= 70:
+        cl.Dragon.hap -= round((110 - cl.Dragon.hap) * .25)
+    elif cl.Dragon.hap < 70 and cl.Dragon.hap >= 40:
+        cl.Dragon.hap -= round((90 - cl.Dragon.hap) * .25)
+    else:
+        cl.Dragon.hap -= round((80 - cl.Dragon.hap) * .25)
     if cl.Dragon.hap < 0:
         cl.Dragon.hap = 0
     sav.save_game()

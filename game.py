@@ -10,7 +10,7 @@ import tournaments as tourney
 import play
 import practice as prat
 
-goldCup = False
+crystalCup = False
 
 statBoard = '''
 Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   Stamina - {}   Happiness - {}   Level - {}
@@ -127,7 +127,7 @@ def tutorial():
     c()
 
 def run():
-    while goldCup == False:
+    while crystalCup == False:
         statShow()
         print(co.g + 'Welcome to the Dragon Center! From here you can train your dragon, practice battling other trainers, play in tournaments, or \nplay with your dragon!')
         print()

@@ -14,6 +14,15 @@ class Base():
 class Dragon(Base):
     pass
 
+class LevelOnePractice(Base):
+    pass
+
+class LevelTwoPractice(Base):
+    pass
+
+class LevelThreePractice(Base):
+    pass
+
 class highScores():
         attack = 10000
         defense = 10000
