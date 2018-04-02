@@ -37,25 +37,45 @@ Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   
 
 '''
 
-def statShow():
-    if cl.Dragon.color == 'red':
-       print(co.r + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'orange':
-        print(co.o + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'yellow':
-        print(co.y + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'green':
-        print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'blue':
-        print(co.b + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'cyan':
-        print(co.c + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'violet':
-        print(co.v + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
-    elif cl.Dragon.color == 'magenta':
-        print(co.m + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+def statShow(x):
+    if x == 'Enemy':
+        if cl.Enemy.color == 'red':
+           print(co.r + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'orange':
+           print(co.o + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'yellow':
+           print(co.y + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'green':
+           print(co.g + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'blue':
+           print(co.b + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'cyan':
+           print(co.c + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'violet':
+           print(co.v + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        elif cl.Enemy.color == 'magenta':
+           print(co.m + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
+        else:
+           print(co.g + statBoard.format(cl.Enemy.name, cl.Enemy.htp, cl.Enemy.att, cl.Enemy.dfc, cl.Enemy.dog, cl.Enemy.spd, cl.Enemy.sta))
     else:
-        print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        if cl.Dragon.color == 'red':
+           print(co.r + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'orange':
+            print(co.o + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'yellow':
+            print(co.y + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'green':
+            print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'blue':
+            print(co.b + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'cyan':
+            print(co.c + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'violet':
+            print(co.v + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        elif cl.Dragon.color == 'magenta':
+            print(co.m + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
+        else:
+            print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, cl.Dragon.hap, cl.Dragon.lvl))
 
 def welcome():
     askTutorial = input(co.b + 'Welcome to Train Your Dragon! Would you like to go through the tutorial?\nYes - 1\nNo - 2\n >>> ').strip()

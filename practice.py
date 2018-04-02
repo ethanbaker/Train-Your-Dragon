@@ -3,6 +3,7 @@ import os as o
 import colors as co
 import training as tr
 import classes as cl
+import battleengine as b
 
 def ask():
     c()
@@ -24,8 +25,14 @@ def ask():
         c()
 
 def lvlOne():
-    
-    
+    b.run(cl.lvlOnePractice)   
+
+def lvlTwo():
+    b.run(cl.lvlTwoPractice)   
+
+def lvlThree():
+    b.run(cl.lvlThreePractice)   
+
 def c():
     o.system('clear')
 
