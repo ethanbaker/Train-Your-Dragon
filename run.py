@@ -32,6 +32,7 @@ dragonAscii = '''
 def main():
     print(co.c + 'Welcome to Train Your Dragon!')
     print(co.rc([co.red, co.orange, co.yellow, co.blue, co.green, co.violet, co.cyan, co.magenta]) + dragonAscii)
+    print(co.y + 'Version - BETA')
     s(2)
     askLoad()
 
