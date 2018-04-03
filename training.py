@@ -43,7 +43,7 @@ def askTrain():
         print(co.y + 'Please answer with a 1, 2, 3, 4, or a 5.')
         s(2)
         c()
-    lvlSys.lvlCheck():
+    lvlSys.lvlCheck()
 
 def attackAsk():
     tutorial = input(co.b + 'Do you want the tutorial on how to train for attack?\nYes - 1\nNo - 2\n >>> ')
@@ -453,7 +453,7 @@ def colorDef():
     elif cl.Dragon.color == 'magenta':
         return co.m
     else:
-        return co.g
+        return co.r
 
 def c():
     o.system('clear')

@@ -1,110 +1,235 @@
 import random as r
 import time
 import os as o
+import classes as cl
+import colors as co
+import game
+import animations as anim
+import load
+
+numbers = [.25, .3, .35, .4, .45, .5]
+
+class Enemy(cl.LevelOnePractice):
+    pass
+
+statBoard = '''
+Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   Stamina - {}   {}   {}
+
+                                                  __----~~~~~~~~~~~------___
+                                       .  .   ~~//====......          __--~ ~~
+                       -.            \_|//     |||\\  ~~~~~~::::... /~
+                    ___-==_       _-~o~  \/    |||  \\            _/~~-
+            __---~~~.==~||\=_    -_--~/_-~|-   |\\   \\        _/~
+        _-~~     .=~    |  \\-_    '-~7  /-   /  ||    \      /
+      .~       .~       |   \\ -_    /  /-   /   ||      \   /
+     /  ____  /         |     \\ ~-_/  /|- _/   .||       \ /
+     |~~    ~~|--~~~~--_ \     ~==-/   | \~--===~~        .\ 
+              '         ~-|      /|    |-~\~~       __--~~
+                          |-~~-_/ |    |   ~\_   _-~            /\ 
+                               /  \     \__   \/~                \__                                   
+                           _--~ _/ | .-~~____--~-/                  ~~==.                               
+                          ((->/~   '.|||' -_|    ~~-/ ,              . _||
+                                     -_     ~\      ~~---l__i__i__i--~~_/
+                                     _-~-__   ~)  \--______________--~~    
+                                   //.-~~~-~_--~- |-------~~~~~~~~   
+                                          //.-~~~--\    
+'''
+
+def statShow(x):
+    if x == 'Enemy':
+        if Enemy.color == 'red':
+           print(co.r + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'orange':
+           print(co.o + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'yellow':
+           print(co.y + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'green':
+           print(co.g + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'blue':
+           print(co.b + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'cyan':
+           print(co.c + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'violet':
+           print(co.v + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        elif Enemy.color == 'magenta':
+           print(co.m + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+        else:
+           print(co.g + statBoard.format(Enemy.name, Enemy.htp, Enemy.att, Enemy.dfc, Enemy.dog, Enemy.spd, Enemy.sta, '', ''))
+    else:
+        if cl.Dragon.color == 'red':
+            print(co.r + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '  ', '  '))
+        elif cl.Dragon.color == 'orange':
+            print(co.o + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '  ', '  '))
+        elif cl.Dragon.color == 'yellow':
+            print(co.y + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
+        elif cl.Dragon.color == 'green':
+            print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
+        elif cl.Dragon.color == 'blue':
+            print(co.b + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
+        elif cl.Dragon.color == 'cyan':
+            print(co.c + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
+        elif cl.Dragon.color == 'violet':
+            print(co.v + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
+        elif cl.Dragon.color == 'magenta':
+            print(co.m + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
+        else:
+            print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
 
 def pmove():
-    print(playerColorDef() + game.statShow('Player'))
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    c()
+    print(playerColorDef())
+    statShow(None)
     print()
-    move = (co.b + 'What would you like to do?\nAttack - 1\nDefend - 2\nForefit - 3\n >>> ')
+    move = input(co.b + 'What would you like to do?\nAttack - 1\nDefend - 2\nForefit - 3\n >>> ')
     if move == '1':
         c()
         playerAttack()
     elif move == '2':
         c()
-        playerDefend()
+        playerDefense()
     elif move == '3':
-        end()
         c()
-        break
+        psta = 0
     else:
         print(co.y + 'Please answer with a 1, 2, or a 3.')
     c()
 
 def emove():
-    game.statShow('Enemy')
-    if cl.Enemy.htp >= 50:
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    print(enemyColorDef())
+    statShow('Enemy')
+    s(3.5)
+    if Enemy.htp >= 50:
         enemyAttack()
-    elif cl.Enemy.htp >= 30 and cl.Enemy.htp < 50:
+    elif Enemy.htp >= 30 and Enemy.htp < 50:
         move = r.randint(1, 10)
         if move <= 7:
             enemyAttack()
         else:
-            enemyDefend()
+            enemyDefense()
     else:
         move = r.randint(1, 3)
         if move <= 2:
             enemyAttack()
         else:
-            enemyDefend()
+            enemyDefense()
 
 def playerAttack():
-    dodge = r.randint(round((100 - edodge) * .5))
-    if dodge <= 13:
-        enemyDodge()
-    c()
-    print(co.g + cl.Dragon.name + ' attacks ' + cl.Enemy.name! + '!')
-    s(1.5)
-    print(playerColorDef())
-    anim.attackAnim()
-    c()
-    if enemyD == True:
-        damage = patt - edfc
-        ehtp -= damage
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    dodge = r.randint(1, round((100 - edog) * .5))
+    if psta >= 0:
+        if dodge <= 7:
+            enemyDodge()
+        else:
+            c()
+            print(co.g + cl.Dragon.name + ' attacks ' + Enemy.name + '!')
+            s(1.5)
+            print(playerColorDef())
+            anim.attackAnim()
+            c()
+            if enemyD == True:
+                damage = patt - edfc
+                Enemy.htp -= damage
+                enemyD = False
+            else:
+                damage = patt - round(edfc * (r.choice(numbers)))
+                Enemy.htp -= damage
     else:
-        damage = patt - round(edfc * (r.randint(.25, .5)))
-        ehtp -= damage
+        c()
+        print(co.g + cl.Dragon.name + ' attacks ' + Enemy.name + '!')
+        s(1.5)
+        print(playerColorDef())
+        anim.attackAnim()
+        c()
+        if enemyD == True:
+            damage = patt - edfc
+            Enemy.htp -= damage
+            enemyD = False
+        else:
+            damage = patt - round(edfc * (r.choice(numbers)))
+            Enemy.htp -= damage
 
 
 def enemyAttack():
-    dodge = r.randint(round((100 - pdodge) * .5))
-    if dodge <= 13:
-        playerDodge()
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    dodge = r.randint(1, round((100 - pdog) * .5))
+    if esta <= 0:
+        if dodge <= 7:
+            playerDodge()
+        else:
+            c()
+            print(co.g + Enemy.name + ' attacks ' + cl.Dragon.name + '!')
+            s(1.5)
+            print(enemyColorDef())
+            anim.attackAnim()
+            c()
+            if playerD == True:
+                damage = eatt - pdfc
+                cl.Dragon.htp -= damage
+                playerD = False
+            else:
+                damage = eatt - round(pdfc * (r.choice(numbers)))
+                cl.Dragon.htp -= damage
+
     else:
         c()
-        print(co.g + cl.Enemy.name + ' attacks ' + cl.Dragon.name + '!')
+        print(co.g + Enemy.name + ' attacks ' + cl.Dragon.name + '!')
         s(1.5)
         print(enemyColorDef())
         anim.attackAnim()
         c()
         if playerD == True:
             damage = eatt - pdfc
-            phtp -= damage
+            cl.Dragon.htp -= damage
+            playerD = False
         else:
-            damage = eatt - round(pdfc * (r.randint(.25, .5)))
-            phtp -= damage
+            damage = eatt - round(pdfc * (r.choice(numbers)))
+            cl.Dragon.htp -= damage
 
 def playerDefense():
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     print(cl.Dragon.name + ' stays back and defends.')
     s(2)
-    anim.dodgeAnim()
+    print(playerColorDef())
+    anim.defenseAnim()
     playerD = True
 
 def enemyDefense():
-    print(cl.Enemy.name + ' stays back and defends.')
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    print(Enemy.name + ' stays back and defends.')
     s(2)
-    anim.dodgeAnim()
+    print(enemyColorDef())
+    anim.defenseAnim()
     enemyD = True
 
 def playerDodge():
-   c()
-   print(cl.Dragon.name + ' dodges ' + cl.Enemy.name + '\'s attack!')
-   s(2)
-   anim.dodgeAnim()
-   playerD = True
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    c()
+    print(cl.Dragon.name + ' dodges ' + Enemy.name + '\'s attack!')
+    s(2)
+    print(playerColorDef())
+    anim.dodgeAnim()
+    playerD = True
+    psta -= 2
 
 def enemyDodge():
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     c()
-    print(cl.Enemy.name + ' dodges ' + cl.Dragon.name + '\'s attack!')
+    print(Enemy.name + ' dodges ' + cl.Dragon.name + '\'s attack!')
     s(2)
+    print(enemyColorDef())
     anim.dodgeAnim()
+    esta -= 2
 
-def playerSkillcheck():
-    check = r.randint(1, cl.Dragon.lvl + 5))
+def playerSkillCheck():
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    check = r.randint(1, (cl.Dragon.lvl + 5))
     if check == 1:
         c()
         then = time.time()
         input('SKILL CHECK')
-        reactionTIme = time.time() - then
+        reactionTime = time.time() - then
         if round(reactionTime * 1000) <= 350:
             patt += 10
             cl.Dragon.xp += 50
@@ -119,7 +244,7 @@ def playerSkillcheck():
             print(co.g + 'Good Skill Check!')
         elif round(reactionTime * 1000) <= 2000 and round(reactionTime * 1000) > 1000:
             print(co.g + 'Okay Skill Check.')
-        elif round(reactionTime * 1000) <= 5000 and round(reactionTime * 1000) <= 2000::
+        elif round(reactionTime * 1000) <= 5000 and round(reactionTime * 1000) <= 2000:
             patt -= 2
             print(co.g + 'Bad Skill Check.')
         else:
@@ -129,6 +254,7 @@ def playerSkillcheck():
         c()
 
 def playerColorDef():
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     if cl.Dragon.color == 'red':
        return co.r
     elif cl.Dragon.color == 'orange':
@@ -149,26 +275,28 @@ def playerColorDef():
         return co.g
 
 def enemyColorDef():
-    if cl.Enemy.color == 'red':
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    if Enemy.color == 'red':
        return co.r
-    elif cl.Enemy.color == 'orange':
+    elif Enemy.color == 'orange':
         return co.o
-    elif cl.Enemy.color == 'yellow':
+    elif Enemy.color == 'yellow':
         return co.y
-    elif cl.Enemy.color == 'green':
+    elif Enemy.color == 'green':
         return co.g
-    elif cl.Enemy.color == 'blue':
+    elif Enemy.color == 'blue':
         return co.b
-    elif cl.Enemy.color == 'cyan':
+    elif Enemy.color == 'cyan':
         return co.c
-    elif cl.Enemy.color == 'violet':
+    elif Enemy.color == 'violet':
         return co.v
-    elif cl.Enemy.color == 'magenta':
+    elif Enemy.color == 'magenta':
         return co.m
     else:
         return co.g
 
 def run():
+    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     phtp = cl.Dragon.htp
     patt = cl.Dragon.att
     pdfc = cl.Dragon.dfc
@@ -176,13 +304,13 @@ def run():
     pdog = cl.Dragon.dog
     pspd = cl.Dragon.spd
     psta = cl.Dragon.sta
-    ehtp = cl.Enemy.htp
-    eatt = cl.Enemy.att
-    edfc = cl.Enemy.dfc
+    ehtp = Enemy.htp
+    eatt = Enemy.att
+    edfc = Enemy.dfc
     enemyD = False
-    edog = cl.Enemy.dog
-    espd = cl.Enemy.spd
-    esta = cl.Enemy.sta
+    edog = Enemy.dog
+    espd = Enemy.spd
+    esta = Enemy.sta
     if cl.Dragon.hap >= 90:
         patt += 1
         pdfc += 1
@@ -197,15 +325,16 @@ def run():
         psta -= 2
     while phtp >= 1 and psta >= 1 and ehtp >= 1 and ehtp >= 1:
         if pspd > espd:
-            playerSkillCheck()
             pmove()
+            playerSkillCheck()
             emove()
         elif pspd < espd:
             emove()
-            playerSkillCheck()
             pmove()
+            playerSkillCheck()
         else:
-            first = r.choice('Enemy', 'Player')
+            people = ['Enemy', 'Player']
+            first = r.choice(people)
             if first == 'Enemy':
                 emove()
                 playerSkillCheck()
@@ -214,6 +343,15 @@ def run():
                 playerSkillCheck()
                 pmove()
                 emove()
+    cl.Dragon.htp = 100
+    Enemy.htp = 100
+
+def c():
+    o.system('clear')
+
+def s(x):
+    time.sleep(x)
 
 if __name__ == '__main__':
+    load.load_game()
     run()

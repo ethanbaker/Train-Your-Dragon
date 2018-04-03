@@ -25,16 +25,19 @@ def ask():
         c()
 
 def lvlOne():
-    b.run(cl.lvlOnePractice)   
+    b.run(1)
 
 def lvlTwo():
-    b.run(cl.lvlTwoPractice)   
+    b.run(2)
 
 def lvlThree():
-    b.run(cl.lvlThreePractice)   
+    b.run(3)
 
 def c():
     o.system('clear')
 
 def s(x):
     time.sleep(x)
+
+if __name__ == '__main__':
+    ask()

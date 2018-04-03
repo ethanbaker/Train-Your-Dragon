@@ -1,6 +1,7 @@
 import random as r
 
 names = ['Jeremy', 'Matthew', 'John', 'Willard', 'Aaorn', 'Ashley', 'Lauren', 'Jamiese', 'Catherine', 'Caroline']
+dragonNames = ['Sobek', 'Viper', 'Glycon', 'Typhon', 'Errol', 'Ramoth', 'Thorn', 'Eldrax', 'Pyre', 'Valyrym']
 colors = ['red', 'orange', 'yellow', 'blue', 'green', 'violet', 'cyan', 'magenta']
 
 class Base():
@@ -12,6 +13,7 @@ class Base():
     spd = 10
     hap = 100
     name = ''
+    trainerName = ''
     color = ''
     xp = 0
     lvl = 1
@@ -25,7 +27,8 @@ class LevelOnePractice(Base):
     dog = r.randint(6, 11)
     spd = r.randint(9, 12)
     sta = r.randint(9, 12)
-    name = r.choice(names)
+    name = r.choice(dragonNames)
+    trainerName = r.choice(names)
     color = r.choice(colors)
 
 class LevelTwoPractice(Base):
@@ -34,7 +37,8 @@ class LevelTwoPractice(Base):
     dog = r.randint(16, 21)
     spd = r.randint(17, 19)
     sta = r.randint(17, 19)
-    name = r.choice(names)
+    name = r.choice(dragonNames)
+    trainerName = r.choice(names)
     color = r.choice(colors)
 
 class LevelThreePractice(Base):
@@ -43,9 +47,10 @@ class LevelThreePractice(Base):
     dog = r.randint(28, 34)
     spd = r.randint(26, 30)
     sta = r.randint(26, 30)
-    name = r.choice(names)
+    name = r.choice(dragonNames)
+    trainerName = r.choice(names)
     color = r.choice(colors)
-    
+
 class highScores():
         attack = 10000
         defense = 10000
@@ -56,4 +61,4 @@ class highScores():
 
 
 if __name__ == '__main__':
-    print(str(LevelThreePractice.att))
+    pass

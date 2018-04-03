@@ -84,7 +84,8 @@ def askName():
             askName()
         else:
             print(co.y + 'Please answer with a 1 or a 2.')
-
+    print(cl.Dragon.name)
+    s(2)
 def c():
     o.system('clear')
 
