@@ -8,9 +8,8 @@ import animations as anim
 import load
 
 numbers = [.25, .3, .35, .4, .45, .5]
-
-class Enemy(cl.LevelOnePractice):
-    pass
+people = ['Enemy', 'Player']
+first = r.choice(people)
 
 statBoard = '''
 Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   Stamina - {}   {}   {}
@@ -76,7 +75,7 @@ def statShow(x):
             print(co.g + statBoard.format(cl.Dragon.name, cl.Dragon.htp, cl.Dragon.att, cl.Dragon.dfc, cl.Dragon.dog, cl.Dragon.spd, cl.Dragon.sta, '', ''))
 
 def pmove():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     c()
     print(playerColorDef())
     statShow(None)
@@ -96,7 +95,7 @@ def pmove():
     c()
 
 def emove():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     print(enemyColorDef())
     statShow('Enemy')
     s(3.5)
@@ -116,9 +115,9 @@ def emove():
             enemyDefense()
 
 def playerAttack():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     dodge = r.randint(1, round((100 - edog) * .5))
-    if psta >= 0:
+    if esta >= 0:
         if dodge <= 7:
             enemyDodge()
         else:
@@ -152,9 +151,9 @@ def playerAttack():
 
 
 def enemyAttack():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     dodge = r.randint(1, round((100 - pdog) * .5))
-    if esta <= 0:
+    if psta <= 0:
         if dodge <= 7:
             playerDodge()
         else:
@@ -188,7 +187,7 @@ def enemyAttack():
             cl.Dragon.htp -= damage
 
 def playerDefense():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     print(cl.Dragon.name + ' stays back and defends.')
     s(2)
     print(playerColorDef())
@@ -196,7 +195,7 @@ def playerDefense():
     playerD = True
 
 def enemyDefense():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     print(Enemy.name + ' stays back and defends.')
     s(2)
     print(enemyColorDef())
@@ -204,7 +203,7 @@ def enemyDefense():
     enemyD = True
 
 def playerDodge():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     c()
     print(cl.Dragon.name + ' dodges ' + Enemy.name + '\'s attack!')
     s(2)
@@ -214,7 +213,7 @@ def playerDodge():
     psta -= 2
 
 def enemyDodge():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     c()
     print(Enemy.name + ' dodges ' + cl.Dragon.name + '\'s attack!')
     s(2)
@@ -223,8 +222,8 @@ def enemyDodge():
     esta -= 2
 
 def playerSkillCheck():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
-    check = r.randint(1, (cl.Dragon.lvl + 5))
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    check = r.randint(1, (cl.Dragon.lvl + 4))
     if check == 1:
         c()
         then = time.time()
@@ -254,7 +253,7 @@ def playerSkillCheck():
         c()
 
 def playerColorDef():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     if cl.Dragon.color == 'red':
        return co.r
     elif cl.Dragon.color == 'orange':
@@ -275,7 +274,7 @@ def playerColorDef():
         return co.g
 
 def enemyColorDef():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
     if Enemy.color == 'red':
        return co.r
     elif Enemy.color == 'orange':
@@ -295,8 +294,9 @@ def enemyColorDef():
     else:
         return co.g
 
-def run():
-    global phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+def run(x):
+    global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    Enemy = cl.Level(x)
     phtp = cl.Dragon.htp
     patt = cl.Dragon.att
     pdfc = cl.Dragon.dfc
@@ -323,28 +323,48 @@ def run():
         pdog -= 2
         pspd -= 2
         psta -= 2
-    while phtp >= 1 and psta >= 1 and ehtp >= 1 and ehtp >= 1:
+    while cl.Dragon.htp >= 1 and Enemy.htp >= 1:
         if pspd > espd:
             pmove()
+            if Enemy.htp <= 0:
+                break
             playerSkillCheck()
             emove()
         elif pspd < espd:
             emove()
+            if cl.Dragon.htp <= 0:
+                break
             pmove()
             playerSkillCheck()
         else:
-            people = ['Enemy', 'Player']
-            first = r.choice(people)
             if first == 'Enemy':
-                emove()
-                playerSkillCheck()
-                pmove()
+                efirst()
             elif first == 'Player':
-                playerSkillCheck()
-                pmove()
-                emove()
+                pfirst()
+    if cl.Dragon.htp <= 0:
+        print(cl.Dragon.name + ' fainted!\n\nYou lost the battle.')
+        cl.Dragon.hap = 0
+        s(2)
+        c()
+    else:
+        if Enemy.htp <= 0:
+            print(Enemy.name + ' fainted!\n\nYou won the battle.')
+            cl.Dragon.hap -= 10
+            cl.Dragon.xp += 30
+            s(2)
+            c()
     cl.Dragon.htp = 100
     Enemy.htp = 100
+
+def pfirst():
+    pmove()
+    playerSkillCheck()
+    emove()
+
+def efirst():
+    emove()
+    playerSkillCheck()
+    pmove()
 
 def c():
     o.system('clear')
@@ -354,4 +374,4 @@ def s(x):
 
 if __name__ == '__main__':
     load.load_game()
-    run()
+    run(1)

@@ -25,13 +25,16 @@ def ask():
         c()
 
 def lvlOne():
-    b.run(1)
+    b.decide(1)
+    b.run()
 
 def lvlTwo():
-    b.run(2)
+    b.decide(2)
+    b.run()
 
 def lvlThree():
-    b.run(3)
+    b.decide(3)
+    b.run()
 
 def c():
     o.system('clear')

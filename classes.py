@@ -21,35 +21,37 @@ class Base():
 class Dragon(Base):
     pass
 
-class LevelOnePractice(Base):
-    att = r.randint(10, 17)
-    dfc = r.randint(5, 12)
-    dog = r.randint(6, 11)
-    spd = r.randint(9, 12)
-    sta = r.randint(9, 12)
-    name = r.choice(dragonNames)
-    trainerName = r.choice(names)
-    color = r.choice(colors)
-
-class LevelTwoPractice(Base):
-    att = r.randint(23, 32)
-    dfc = r.randint(17, 25)
-    dog = r.randint(16, 21)
-    spd = r.randint(17, 19)
-    sta = r.randint(17, 19)
-    name = r.choice(dragonNames)
-    trainerName = r.choice(names)
-    color = r.choice(colors)
-
-class LevelThreePractice(Base):
-    att = r.randint(36, 43)
-    dfc = r.randint(26, 31)
-    dog = r.randint(28, 34)
-    spd = r.randint(26, 30)
-    sta = r.randint(26, 30)
-    name = r.choice(dragonNames)
-    trainerName = r.choice(names)
-    color = r.choice(colors)
+class Level(Base):
+    htp = 100
+    
+    def __init__(self, level):
+        if level == 1:
+            att = r.randint(10, 17)
+            dfc = r.randint(5, 12)
+            dog = r.randint(6, 11)
+            spd = r.randint(9, 12)
+            sta = r.randint(9, 12)
+            name = r.choice(dragonNames)
+            trainerName = r.choice(names)
+            color = r.choice(colors)
+        elif level == 2:        
+            att = r.randint(23, 32)
+            dfc = r.randint(17, 25)
+            dog = r.randint(16, 21)
+            spd = r.randint(17, 19)
+            sta = r.randint(17, 19)
+            name = r.choice(dragonNames)
+            trainerName = r.choice(names)
+            color = r.choice(colors)
+        elif level == 3:
+            att = r.randint(36, 43)
+            dfc = r.randint(26, 31)
+            dog = r.randint(28, 34)
+            spd = r.randint(26, 30)
+            sta = r.randint(26, 30)
+            name = r.choice(dragonNames)
+            trainerName = r.choice(names)
+            color = r.choice(colors)
 
 class highScores():
         attack = 10000
