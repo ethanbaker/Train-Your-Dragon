@@ -8,7 +8,7 @@ import classes as cl
 
 def main():
     print(co.g + 'You play with ' + cl.Dragon.name + '.')
-    print(b.playerColorDef)
+    print(b.playerColorDef())
     s(1.5)
     anim.playAnim()
     cl.Dragon.hap += 45
