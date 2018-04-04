@@ -9,7 +9,6 @@ import load
 
 numbers = [.25, .3, .35, .4, .45, .5]
 people = ['Enemy', 'Player']
-first = r.choice(people)
 
 statBoard = '''
 Name - {}   Heath - {}   Attack - {}   Defence - {}   Dodge - {}   Speed - {}   Stamina - {}   {}   {}
@@ -337,24 +336,35 @@ def run(x):
             pmove()
             playerSkillCheck()
         else:
-            if first == 'Enemy':
-                efirst()
-            elif first == 'Player':
+            if decide == True:
+                decide()
+            if player == True:
                 pfirst()
+            else:
+                efirst()
     if cl.Dragon.htp <= 0:
         print(cl.Dragon.name + ' fainted!\n\nYou lost the battle.')
+        Enemy.win = True
         cl.Dragon.hap = 0
         s(2)
         c()
     else:
         if Enemy.htp <= 0:
             print(Enemy.name + ' fainted!\n\nYou won the battle.')
+            Enemy.win = False
             cl.Dragon.hap -= 10
             cl.Dragon.xp += 30
             s(2)
             c()
     cl.Dragon.htp = 100
     Enemy.htp = 100
+
+def decide():
+    if first == 'Enemy':
+        player = False
+    elif first == 'Player':
+        player = True
+    decide = False
 
 def pfirst():
     pmove()

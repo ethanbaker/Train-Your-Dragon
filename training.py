@@ -9,6 +9,7 @@ import load as loa
 import math
 import game
 import animations as anim
+import lvlSys
 
 def askTrain():
     loa.load_scores()

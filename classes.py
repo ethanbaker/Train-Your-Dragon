@@ -1,7 +1,7 @@
 import random as r
+from time import sleep as s
 
-names = ['Jeremy', 'Matthew', 'John', 'Willard', 'Aaorn', 'Ashley', 'Lauren', 'Jamiese', 'Catherine', 'Caroline']
-dragonNames = ['Sobek', 'Viper', 'Glycon', 'Typhon', 'Errol', 'Ramoth', 'Thorn', 'Eldrax', 'Pyre', 'Valyrym']
+dragonNames = ['Sobek', 'Viper', 'Glycon', 'Typhon', 'Errol', 'Ramoth', 'Thorn', 'Eldrax', 'Pyre', 'Alduim']
 colors = ['red', 'orange', 'yellow', 'blue', 'green', 'violet', 'cyan', 'magenta']
 
 class Base():
@@ -12,9 +12,8 @@ class Base():
     sta = 10
     spd = 10
     hap = 100
-    name = ''
-    trainerName = ''
-    color = ''
+    name = 'Base'
+    color = 'Base'
     xp = 0
     lvl = 1
 
@@ -23,35 +22,64 @@ class Dragon(Base):
 
 class Level(Base):
     htp = 100
-    
+    win = None
     def __init__(self, level):
         if level == 1:
-            att = r.randint(10, 17)
-            dfc = r.randint(5, 12)
-            dog = r.randint(6, 11)
-            spd = r.randint(9, 12)
-            sta = r.randint(9, 12)
-            name = r.choice(dragonNames)
-            trainerName = r.choice(names)
-            color = r.choice(colors)
+            self.att = r.randint(10, 17)
+            self.dfc = r.randint(5, 12)
+            self.dog = r.randint(6, 11)
+            self.spd = r.randint(9, 12)
+            self.sta = r.randint(9, 12)
+            self.name = r.choice(dragonNames)
+            self.color = r.choice(colors)
         elif level == 2:        
-            att = r.randint(23, 32)
-            dfc = r.randint(17, 25)
-            dog = r.randint(16, 21)
-            spd = r.randint(17, 19)
-            sta = r.randint(17, 19)
-            name = r.choice(dragonNames)
-            trainerName = r.choice(names)
-            color = r.choice(colors)
+            self.att = r.randint(23, 32)
+            self.dfc = r.randint(17, 25)
+            self.dog = r.randint(16, 21)
+            self.spd = r.randint(17, 19)
+            self.sta = r.randint(17, 19)
+            self.name = r.choice(dragonNames)
+            self.color = r.choice(colors)
         elif level == 3:
-            att = r.randint(36, 43)
-            dfc = r.randint(26, 31)
-            dog = r.randint(28, 34)
-            spd = r.randint(26, 30)
-            sta = r.randint(26, 30)
-            name = r.choice(dragonNames)
-            trainerName = r.choice(names)
-            color = r.choice(colors)
+            self.att = r.randint(36, 43)
+            self.dfc = r.randint(26, 31)
+            self.dog = r.randint(28, 34)
+            self.spd = r.randint(26, 30)
+            self.sta = r.randint(26, 30)
+            self.name = r.choice(dragonNames) 
+            self.color = r.choice(colors)
+        elif level == 'bronze':
+            self.att = 18
+            self.dfc = 7
+            self.dog = 13
+            self.spd = 19
+            self.sta = 13
+            self.name = 'Mushu'
+            self.color = 'orange'
+        elif level == 'sliver':
+            self.att = 26
+            self.dfc = 14
+            self.dog = 21
+            self.spd = 29
+            self.sta = 24
+            self.name = 'Saphira' 
+            self.color = 'blue'
+        elif level == 'gold':
+            self.att = 35
+            self.dfc = 19
+            self.dog = 27
+            self.spd = 35
+            self.sta = 30
+            self.name = 'Jade'
+            self.color = 'cyan'
+        elif level == 'crystal':
+            self.att = 45
+            self.dfc = 25
+            self.dog = 40
+            self.spd = 50
+            self.sta = 40
+            self.name = 'Valyrym'
+            self.color = 'red'
 
 class highScores():
         attack = 10000
@@ -61,6 +89,3 @@ class highScores():
         stamina = 10000
 
 
-
-if __name__ == '__main__':
-    pass

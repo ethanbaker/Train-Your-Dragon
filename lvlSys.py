@@ -5,7 +5,7 @@ import math
 import animations as anim
 
 def lvlCheck():
-    if cl.Dragon.xp == math.floor(50 + cl.Dragon.lvl * 5.25)
+    if cl.Dragon.xp == math.floor(50 + cl.Dragon.lvl * 5.25):
         lvlUp()
     else:
         pass

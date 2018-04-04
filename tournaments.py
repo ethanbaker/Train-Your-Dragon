@@ -2,8 +2,10 @@ import battleengine as b
 import os as o
 from time import sleep as s
 import colors as co
+import load
 
 def ask():
+    load.load_game()
     tourney = input(co.b + 'What tournament would you like to enter?\nBronze - 1\nSilver - 2\nGold - 3\nCrystal - 4\n >>> ')
     if tourney == '1':
         bronzeCup()
@@ -49,3 +51,6 @@ def crystalCup():
 
 def c():
     o.system('clear')
+
+if __name__ == '__main__':
+    ask()

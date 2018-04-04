@@ -143,7 +143,7 @@ def run():
             if cl.Dragon.hap < 20:
                 print(co.r + cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
             else:
-                prat.main()
+                prat.ask()
         elif action == '3':
             if cl.Dragon.lvl < 15:
                 print(co.r + 'Sorry, you must be level 15 or above to play in tournaments.')

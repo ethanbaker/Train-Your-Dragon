@@ -4,9 +4,11 @@ import colors as co
 import training as tr
 import classes as cl
 import battleengine as b
+import load
 
 def ask():
     c()
+    load.load_game()
     print(co.g + 'Welcome to the practice center!')
     print()
     level = input(co.b + 'What level would you like to practice with?\nLevel One - 1\nLevel Two - 2\nLevel Three - 3\n >>> ')
@@ -25,16 +27,13 @@ def ask():
         c()
 
 def lvlOne():
-    b.decide(1)
-    b.run()
+    b.run(1)
 
 def lvlTwo():
-    b.decide(2)
-    b.run()
+    b.run(2)
 
 def lvlThree():
-    b.decide(3)
-    b.run()
+    b.run(3)
 
 def c():
     o.system('clear')
