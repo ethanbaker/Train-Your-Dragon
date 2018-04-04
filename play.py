@@ -3,6 +3,7 @@ import os as o
 import animations as anim
 import battleengine as b
 import random as r
+import colors as co
 
 def main():
     print(co.g + 'You play with ' + cl.Dragon.name + '.')
