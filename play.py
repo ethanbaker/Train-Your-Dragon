@@ -14,3 +14,5 @@ def main():
     cl.Dragon.hap += r.randint(1, 15)
     c()
 
+if __name__ == '__main__':
+    main()
