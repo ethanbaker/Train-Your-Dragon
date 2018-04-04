@@ -22,32 +22,41 @@ def ask():
         ask()
 
 def bronzeCup():
+    c()
     b.run('bronze')
     if b.Enemy.win == False:
-        win()
+        win(None)
     else:
         lose()
 
 def silverCup():
+    c()
     b.run('silver')
     if b.Enemy.win == False:
-        win()
+        win(None)
     else:
         lose()
 
 def goldCup():
+    c()
     b.run('gold')
     if b.Enemy.win == False:
-        win()
+        win(None)
     else:
         lose()
 
 def crystalCup():
+    c()
     b.run('crystal')
     if b.Enemy.win == False:
-        win()
+        win('crystal')
     else:
         lose()
+
+def win(x):
+    if x == 'crystal':
+
+
 
 def c():
     o.system('clear')
