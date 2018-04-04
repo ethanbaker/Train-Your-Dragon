@@ -55,7 +55,7 @@ def crystalCup():
 
 def win(x):
     if x == 'crystal':
-
+        pass
 
 
 def c():
