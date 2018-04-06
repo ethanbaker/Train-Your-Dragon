@@ -1,0 +1,17 @@
+get rid of test name call in askName()
+update tutorial
+maybe balance playing?????
+make it so you cant have OP stats in game
+balance getting < 100 ms in dodge
+sleep and clear after showing hishscores
+fix lvlSys
+rebalace xp in dodge
+sleep after warning sign to not being happy and clear screen
+change gained xp color
+att max = 50
+dfc max = 30?
+dog max = 35
+spd max = 50
+sta max = 50
+clear screen before telling that enemy defends
+if defense is higher than damage, keep health level instead of adding`
