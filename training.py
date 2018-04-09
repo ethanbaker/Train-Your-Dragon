@@ -35,6 +35,8 @@ def askTrain():
         print('Dodge game high score - ' + str(cl.highScores.dodge))
         print('Speed game high score - ' + str(cl.highScores.speed))
         print('Stamina game high score - ' + str(cl.highScores.stamina))
+        input('---Press Enter to Continue---')
+        c()
     elif training == '7':
         print('Returning to the training center.')
         s(2)
@@ -261,6 +263,11 @@ def dodgeTrain():
         dogGain += 5
         cl.Dragon.xp += 50
         xpGain += 50
+    elif round(reactionTime * 10) == 1:
+        cl.Dragon.dog += 4
+        dogGain += 4
+        cl.Dragon.xp += 45
+        xpGain += 45
     else:
         if cl.Dragon.hap >= 30:
             cl.Dragon.xp += 20 - round(reactionTime * 10)

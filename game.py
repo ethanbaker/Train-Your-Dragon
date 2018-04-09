@@ -117,12 +117,23 @@ def tutorial():
     print('If your dragon has more speed points than the opponent, they get to attack first.')
     print()
     s(2.5)
-    print('If your dragon\'s stamina points drop below 0, your dragon will collapse with exhaustion and be unable to fight.')
+    print('If your dragon\'s stamina points drop below 0, your dragon will be exhausted and be unable to dodge.')
     print()
     s(2.5)
-    print('Your dragon also has happiness points. These show how happy your dragon is. The less happy your dragon is, the less XP you will \nget and the more likely your opponent will dodge their attack or your dragon will not dodge an attack.')
+    print('Your dragon also has happiness points. These show how happy your dragon is. The less happy your dragon is, the less XP you will \nget and the attribute points you will get.')
     print()
     input(co.c + '---Press Enter to continue---')
+    c()
+    print(co.g + 'When you battle other dragons, you can attack or defend.')
+    print()
+    s(2.5)
+    print(co.g + 'Attacking deals damage to the other dragon.')
+    s(2.5)
+    print(co.g + 'Defending reduces the amount of damage you will take when your enemy attacks you by a ton.')
+    s(2.5)
+    print(co.g + 'During the battle, random skill checks appear. The faster you press enter and respond, the more bonus attack points and \nXP you will gain.')
+    print()
+    input('---Press Enter to Continue')
     print()
     print(co.g + 'Good luck!')
     s(1.5)
@@ -130,6 +141,16 @@ def tutorial():
 
 def run():
     while crystalCup == False:
+        if cl.Dragon.att > 55:
+            cl.Dragon.att = 55
+        if cl.Dragon.dfc > 30:
+            cl.Dragon.att = 30
+        if cl.Dragon.dog > 35:
+            cl.Dragon.dog = 35
+        if cl.Dragon.spd > 50:
+            cl.Dragon.spd = 50
+        if cl.Dragon.sta > 50:
+            cl.Dragon.sta = 50
         statShow('')
         print(co.g + 'Welcome to the Dragon Center! From here you can train your dragon, practice battling other trainers, play in tournaments, or \nplay with your dragon!')
         print()
@@ -172,6 +193,7 @@ def run():
             s(2)
             c()
             run()
+
 
 def c():
     o.system('clear')
