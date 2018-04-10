@@ -128,11 +128,17 @@ def playerAttack():
             c()
             if enemyD == True:
                 damage = patt - edfc
-                Enemy.htp -= damage
+                if damage < 0:
+                    pass
+                else:
+                    Enemy.htp -= damage
                 enemyD = False
             else:
                 damage = patt - round(edfc * (r.choice(numbers)))
-                Enemy.htp -= damage
+                if damage < 0:
+                    pass
+                else:
+                    Enemy.htp -= damage
     else:
         c()
         print(co.g + cl.Dragon.name + ' attacks ' + Enemy.name + '!')
@@ -142,12 +148,17 @@ def playerAttack():
         c()
         if enemyD == True:
             damage = patt - edfc
-            Enemy.htp -= damage
+            if damage < 0:
+                pass
+            else:
+                Enemy.htp -= damage
             enemyD = False
         else:
             damage = patt - round(edfc * (r.choice(numbers)))
-            Enemy.htp -= damage
-
+            if damage < 0:
+                pass
+            else:
+                Enemy.htp -= damage
 
 def enemyAttack():
     global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
@@ -195,6 +206,7 @@ def playerDefense():
 
 def enemyDefense():
     global Enemy, phtp, patt, pdfc, playerD, pdog, pspd, psta, ehtp, eatt, edfc, enemyD, edog, espd, esta
+    c()
     print(Enemy.name + ' stays back and defends.')
     s(2)
     print(enemyColorDef())

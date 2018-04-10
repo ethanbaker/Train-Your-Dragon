@@ -158,11 +158,15 @@ def run():
         if action == '1':
             if cl.Dragon.hap < 20:
                 print(co.r + cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
+                s(2)
+                c()
             else:
                 train.main()
         elif action == '2':
             if cl.Dragon.hap < 20:
                 print(co.r + cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
+                s(2)
+                c()
             else:
                 prat.ask()
         elif action == '3':
@@ -173,7 +177,9 @@ def run():
                 run()
             else:
                 if cl.Dragon.hap < 20:
-                    print(co.r + cl.Dragon.name + ' is not happy enough to train with you. Try playing with them to increase their happiness.')
+                    print(co.r + cl.Dragon.name + ' is not happy enough to fight with you. Try playing with them to increase their happiness.')
+                    s(2)
+                    c()
                 else:
                     tourney.main()
         elif action == '4':
