@@ -73,7 +73,7 @@ class Level(Base):
             self.name = 'Jade'
             self.color = 'cyan'
         elif level == 'crystal':
-            self.att = 45
+            self.att = 50
             self.dfc = 25
             self.dog = 40
             self.spd = 50

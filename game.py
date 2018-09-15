@@ -206,7 +206,6 @@ def c():
 
 def main():
     c()
-    loa.load_game()
     run()
 
 

@@ -10,8 +10,6 @@ import save as sav
 
 def lvlCheck():
     loa.load_game()
-    print(cl.Dragon.xp)
-    print(math.floor(50 + cl.Dragon.lvl * 5.25))
     if cl.Dragon.xp >= math.floor(50 + (cl.Dragon.lvl * 5.25)):
         lvlUp()
     else:
